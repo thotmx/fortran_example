@@ -22,11 +22,13 @@ program read_from_file
     type(antoine_equation_constants_type), dimension(:), allocatable :: antoine_equation_constants
     allocate(antoine_equation_constants(100))
 
+    ! Counter for the constants in the file
     counter = 0
     open(unit=100, file='constants.nml', status='old', action='read')
     do
         read(100, nml=constants, iostat=io_stat)
         if (io_stat /= 0) exit
+        ! Save the namelist values in the array of structs
         antoine_equation_constants(counter)%compound = compound
         antoine_equation_constants(counter)%a = a
         antoine_equation_constants(counter)%b = b 
@@ -36,11 +38,17 @@ program read_from_file
         !print *, compound, a, b, c, t_min, t_max 
         counter =  counter + 1
     end do
-    
-    number_of_constants = counter 
    
+    ! Save the number of constants 
+    number_of_constants = counter 
+  
+    ! Loop through the array (only the elements required) 
     do n = 0, number_of_constants - 1
       print *, antoine_equation_constants(n)
     end do
+
+    ! In antoine_equation_constants array you will have the required information for your program.
+    ! :) Eliud
+    ! Look at the nml format, it's simple an easy to populate
     close(100)
 end program read_from_file

@@ -1,0 +1,24 @@
+&constants 
+  compound='Metano'
+  a=8.60417
+  b=897.947
+  c= -7.15
+  t_min= 90
+  t_max= 121
+/
+&constants 
+  compound='Etano'
+  a=9.04355
+  b=1511.417
+  c= -17.15
+  t_min= 131
+  t_max=198
+/
+&constants
+  compound='Propano'
+  a=10.10588
+  b=1872.462
+  c=-25.15
+  t_min=165
+  t_max=248
+/
